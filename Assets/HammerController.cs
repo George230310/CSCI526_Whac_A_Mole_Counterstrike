@@ -20,13 +20,16 @@ public class HammerController : MonoBehaviour
     // 标志，表示是否正在执行锤击操作
     private bool smashing = false;
 
+    private void Awake()
+    {
+        // 在游戏初始化时，隐藏鼠标
+        Cursor.visible = false;
+    }
+
     private void Start()
     {
         // 在游戏开始时，记录锤子的初始位置
         originalPosition = transform.position;
-
-        // 隐藏鼠标
-        Cursor.visible = false;
     }
 
     void Update()
@@ -80,5 +83,6 @@ public class HammerController : MonoBehaviour
         }
     }
 }
+
 
 
