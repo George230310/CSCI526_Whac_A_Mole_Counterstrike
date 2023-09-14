@@ -24,6 +24,9 @@ public class HammerController : MonoBehaviour
     {
         // 在游戏开始时，记录锤子的初始位置
         originalPosition = transform.position;
+
+        // 隐藏鼠标
+        Cursor.visible = false;
     }
 
     void Update()
@@ -49,9 +52,6 @@ public class HammerController : MonoBehaviour
         }
     }
 
-    // 用于调整插值运算的速度，值越大移动越快，越小移动越平滑
-    private float lerpSpeed = 0.1f;
-
     void MoveWithMouse()
     {
         // 从摄像机通过鼠标当前位置发出一条射线
@@ -69,15 +69,16 @@ public class HammerController : MonoBehaviour
             // 如果锤子正在执行锤击操作
             if (smashing)
             {
-                // 使锤子平滑地移动到锤击的目标位置
-                transform.position = Vector3.Lerp(transform.position, smashPosition, lerpSpeed);
+                // 使锤子移动到锤击的目标位置
+                transform.position = smashPosition;
             }
             else
             {
-                // 如果锤子没有在执行锤击操作，使其平滑地跟随鼠标移动
-                transform.position = Vector3.Lerp(transform.position, targetPosition, lerpSpeed);
+                // 如果锤子没有在执行锤击操作，使其跟随鼠标移动
+                transform.position = targetPosition;
             }
         }
     }
 }
+
 
