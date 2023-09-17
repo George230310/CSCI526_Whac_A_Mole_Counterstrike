@@ -64,6 +64,10 @@ public class Mole : MonoBehaviour
         {
             CancelInvoke();
         }
+        
+        // Schedule a rise at a random time within the next 5 seconds
+        float randomRiseTime = Random.Range(0f, 5f);
+        Invoke("Rise", randomRiseTime);
     }
     
     // Detect collisions with other objects (like a hammer)
