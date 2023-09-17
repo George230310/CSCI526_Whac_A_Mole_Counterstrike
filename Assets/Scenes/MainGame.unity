@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17554742, g: 0.21965528, b: 0.30197996, a: 1}
+  m_IndirectSpecularColor: {r: 0.17554705, g: 0.2196546, b: 0.30197877, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -266,6 +266,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -432,6 +436,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -890,6 +898,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 6011721224765386205, guid: f570ee9060841eb4cbe604ef2b0fe6ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011721224765386205, guid: f570ee9060841eb4cbe604ef2b0fe6ee, type: 3}
+      propertyPath: m_TagString
+      value: Hammer
+      objectReference: {fileID: 0}
     - target: {fileID: 7293215945223823310, guid: f570ee9060841eb4cbe604ef2b0fe6ee, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -943,6 +959,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1012,6 +1032,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1359,6 +1383,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1428,6 +1456,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1497,6 +1529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1566,6 +1602,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653713811597782474, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2848206954940289788, guid: b894980e8953a435393ea56b36ddbfa6, type: 3}
       propertyPath: m_RootOrder
       value: 2
