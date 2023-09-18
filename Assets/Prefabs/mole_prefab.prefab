@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d485fceb6ce7482ebcaacb4098e6ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  fallSpeed: 10
+  speed: 30
+  fallSpeed: 30
   riseHeight: 5
   defaultMat: {fileID: 2100000, guid: 1ef7e58dba758324ba9b6b2556ea4a6a, type: 2}
   hitMat: {fileID: 2100000, guid: db61166be8c1bc14cb2c8fc2712045a9, type: 2}

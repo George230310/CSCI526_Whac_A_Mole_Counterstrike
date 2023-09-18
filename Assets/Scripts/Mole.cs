@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class Mole : MonoBehaviour
 {
-    private Vector3 initialPosition;
     public float speed = 2.0f;
     public float fallSpeed = 2.0f;
     public float riseHeight = 1.0f;
+    
+    private Vector3 initialPosition;
     private bool isRising = false;
     private bool isAtPeak = false;
     private bool isHit = false;
+    
+    private float _upDuration = 1.0f;
     
     // materials for switching mole color after getting hit
     [SerializeField] private Material defaultMat;
@@ -37,7 +40,8 @@ public class Mole : MonoBehaviour
                 isRising = false;
                 isAtPeak = true;
                 CancelInvoke(nameof(Fall));
-                Invoke(nameof(Fall), 3.0f);
+                _upDuration = Random.Range(0.5f, 1.5f);
+                Invoke(nameof(Fall), _upDuration);
             }
         }
         else if (!isRising && !isAtPeak && transform.position.y > initialPosition.y)
