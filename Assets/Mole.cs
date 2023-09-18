@@ -9,44 +9,46 @@ public class Mole : MonoBehaviour
     private bool isRising = false;
     private bool isAtPeak = false;
     private bool isHit = false;
+    
+    // materials for switching mole color after getting hit
+    [SerializeField] private Material defaultMat;
+    [SerializeField] private Material hitMat;
+    private Renderer _myRenderer;
 
-    void Start()
+    private void Start()
     {
         initialPosition = transform.position;
         TriggerRiseAfterRandomDelay();
+        _myRenderer = GetComponent<Renderer>();
+        _myRenderer.material = defaultMat;
     }
 
-    void Update()
+    private void Update()
     {
         if (isRising && !isAtPeak)
         {
             float currentHeight = transform.position.y - initialPosition.y;
             if (currentHeight < riseHeight)
             {
-                transform.Translate(Vector3.up * speed * Time.deltaTime);
+                transform.Translate(Vector3.up * (speed * Time.deltaTime));
             }
             else
             {
                 isRising = false;
                 isAtPeak = true;
-                CancelInvoke("Fall");
-                Invoke("Fall", 1.0f);
+                CancelInvoke(nameof(Fall));
+                Invoke(nameof(Fall), 3.0f);
             }
         }
         else if (!isRising && !isAtPeak && transform.position.y > initialPosition.y)
         {
-            transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
+            transform.Translate(Vector3.down * (fallSpeed * Time.deltaTime));
         }
-    }
-
-    void OnMouseDown()
-    {
-        isHit = true;
-        FallImmediately();
     }
 
     private void StartRising()
     {
+        _myRenderer.material = defaultMat;
         isHit = false;
         isRising = true;
         isAtPeak = false;
@@ -64,21 +66,23 @@ public class Mole : MonoBehaviour
     {
         isAtPeak = false;
         isRising = false;
-        CancelInvoke("Fall");
-        CancelInvoke("StartRising");
+        CancelInvoke(nameof(Fall));
+        CancelInvoke(nameof(StartRising));
         TriggerRiseAfterRandomDelay();
     }
 
     private void TriggerRiseAfterRandomDelay()
     {
         float randomRiseDelay = Random.Range(1f, 5f);
-        Invoke("StartRising", randomRiseDelay);
+        Invoke(nameof(StartRising), randomRiseDelay);
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Hammer"))
         {
+            _myRenderer.material = hitMat;
+            Debug.Log("Mole hit!");
             isHit = true;
             FallImmediately();
         }
