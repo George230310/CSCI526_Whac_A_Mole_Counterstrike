@@ -1,83 +1,92 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HammerController : MonoBehaviour
 {
-    // ¿ØÖÆ´¸»÷ËÙ¶ÈµÄ¹«¹²±äÁ¿
+    // æ§åˆ¶é”¤å‡»é€Ÿåº¦çš„å…¬å…±å˜é‡
     public float smashSpeed = 10f;
 
-    // ¶¨Òå´¸×ÓÔÚÆ½ÃæÉÏ·½µÄ¸ß¶È
+    // å®šä¹‰é”¤å­åœ¨å¹³é¢ä¸Šæ–¹çš„é«˜åº¦
     public float hammerHeight = 10f;
 
-    // ´¸×Ó´¸»÷µØÃæÊ±ÏÂ½µµÄ¾àÀë
+    // é”¤å­é”¤å‡»åœ°é¢æ—¶ä¸‹é™çš„è·ç¦»
     public float smashDistance = 0.5f;
 
-    // ÓÃÓÚ´æ´¢´¸×ÓµÄ³õÊ¼Î»ÖÃ
+    public List<GameObject> moles;
+
+    // ç”¨äºå­˜å‚¨é”¤å­çš„åˆå§‹ä½ç½®
     private Vector3 originalPosition;
 
-    // ´¸×Ó´¸»÷Ê±µÄÄ¿±êÎ»ÖÃ
+    // é”¤å­é”¤å‡»æ—¶çš„ç›®æ ‡ä½ç½®
     private Vector3 smashPosition;
 
-    // ±êÖ¾£¬±íÊ¾ÊÇ·ñÕıÔÚÖ´ĞĞ´¸»÷²Ù×÷
+    // æ ‡å¿—ï¼Œè¡¨ç¤ºæ˜¯å¦æ­£åœ¨æ‰§è¡Œé”¤å‡»æ“ä½œ
     private bool smashing = false;
+    
 
     private void Awake()
     {
-        // ÔÚÓÎÏ·³õÊ¼»¯Ê±£¬Òş²ØÊó±ê
+        // åœ¨æ¸¸æˆåˆå§‹åŒ–æ—¶ï¼Œéšè—é¼ æ ‡
         Cursor.visible = false;
     }
 
     private void Start()
     {
-        // ÔÚÓÎÏ·¿ªÊ¼Ê±£¬¼ÇÂ¼´¸×ÓµÄ³õÊ¼Î»ÖÃ
+        // åœ¨æ¸¸æˆå¼€å§‹æ—¶ï¼Œè®°å½•é”¤å­çš„åˆå§‹ä½ç½®
         originalPosition = transform.position;
     }
 
     void Update()
     {
-        // Ã¿Ò»Ö¡¶¼Ê¹´¸×ÓÒÆ¶¯ÒÔ¸úËæÊó±ê
+       if (moles[0].GetComponent<Mole>().isRising)
+       {
+           
+       }
+        
+        // æ¯ä¸€å¸§éƒ½ä½¿é”¤å­ç§»åŠ¨ä»¥è·Ÿéšé¼ æ ‡
         MoveWithMouse();
 
-        // µ±Íæ¼Ò°´ÏÂÊó±ê×ó¼ü£¬²¢ÇÒ´¸×Óµ±Ç°Ã»ÓĞÔÚÖ´ĞĞ´¸»÷²Ù×÷
+        // å½“ç©å®¶æŒ‰ä¸‹é¼ æ ‡å·¦é”®ï¼Œå¹¶ä¸”é”¤å­å½“å‰æ²¡æœ‰åœ¨æ‰§è¡Œé”¤å‡»æ“ä½œ
         if (Input.GetMouseButtonDown(0) && !smashing)
         {
-            // ÉèÖÃ±êÖ¾Îªtrue£¬±íÊ¾¿ªÊ¼Ö´ĞĞ´¸»÷²Ù×÷
+            // è®¾ç½®æ ‡å¿—ä¸ºtrueï¼Œè¡¨ç¤ºå¼€å§‹æ‰§è¡Œé”¤å‡»æ“ä½œ
             smashing = true;
 
-            // ¼ÆËã´¸»÷Ê±´¸×ÓµÄÄ¿±êÎ»ÖÃ
+            // è®¡ç®—é”¤å‡»æ—¶é”¤å­çš„ç›®æ ‡ä½ç½®
             smashPosition = transform.position - new Vector3(0, smashDistance, 0);
         }
 
-        // µ±Íæ¼ÒËÉ¿ªÊó±ê×ó¼ü£¬²¢ÇÒ´¸×Óµ±Ç°ÕıÔÚÖ´ĞĞ´¸»÷²Ù×÷
+        // å½“ç©å®¶æ¾å¼€é¼ æ ‡å·¦é”®ï¼Œå¹¶ä¸”é”¤å­å½“å‰æ­£åœ¨æ‰§è¡Œé”¤å‡»æ“ä½œ
         if (Input.GetMouseButtonUp(0) && smashing)
         {
-            // ÉèÖÃ±êÖ¾Îªfalse£¬±íÊ¾´¸»÷²Ù×÷½áÊø
+            // è®¾ç½®æ ‡å¿—ä¸ºfalseï¼Œè¡¨ç¤ºé”¤å‡»æ“ä½œç»“æŸ
             smashing = false;
         }
     }
 
     void MoveWithMouse()
     {
-        // ´ÓÉãÏñ»úÍ¨¹ıÊó±êµ±Ç°Î»ÖÃ·¢³öÒ»ÌõÉäÏß
+        // ä»æ‘„åƒæœºé€šè¿‡é¼ æ ‡å½“å‰ä½ç½®å‘å‡ºä¸€æ¡å°„çº¿
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        // ÓÃÓÚ´æ´¢ÉäÏßÅö×²µÄĞÅÏ¢
+        // ç”¨äºå­˜å‚¨å°„çº¿ç¢°æ’çš„ä¿¡æ¯
         RaycastHit hit;
 
-        // Èç¹ûÉäÏßÓëÎïÌåÅö×²
+        // å¦‚æœå°„çº¿ä¸ç‰©ä½“ç¢°æ’
         if (Physics.Raycast(ray, out hit))
         {
-            // ¼ÆËã´¸×ÓµÄÄ¿±êÎ»ÖÃ£¬Ê¹Æä¸úËæÊó±ê
+            // è®¡ç®—é”¤å­çš„ç›®æ ‡ä½ç½®ï¼Œä½¿å…¶è·Ÿéšé¼ æ ‡
             Vector3 targetPosition = new Vector3(hit.point.x, hammerHeight, hit.point.z);
 
-            // Èç¹û´¸×ÓÕıÔÚÖ´ĞĞ´¸»÷²Ù×÷
+            // å¦‚æœé”¤å­æ­£åœ¨æ‰§è¡Œé”¤å‡»æ“ä½œ
             if (smashing)
             {
-                // Ê¹´¸×ÓÒÆ¶¯µ½´¸»÷µÄÄ¿±êÎ»ÖÃ
+                // ä½¿é”¤å­ç§»åŠ¨åˆ°é”¤å‡»çš„ç›®æ ‡ä½ç½®
                 transform.position = smashPosition;
             }
             else
             {
-                // Èç¹û´¸×ÓÃ»ÓĞÔÚÖ´ĞĞ´¸»÷²Ù×÷£¬Ê¹Æä¸úËæÊó±êÒÆ¶¯
+                // å¦‚æœé”¤å­æ²¡æœ‰åœ¨æ‰§è¡Œé”¤å‡»æ“ä½œï¼Œä½¿å…¶è·Ÿéšé¼ æ ‡ç§»åŠ¨
                 transform.position = targetPosition;
             }
         }

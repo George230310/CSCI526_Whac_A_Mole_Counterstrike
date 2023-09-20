@@ -6,17 +6,17 @@ public class Mole : MonoBehaviour
     public float fallSpeed = 2.0f;
     public float riseHeight = 1.0f;
     
-    private Vector3 initialPosition;
-    private bool isRising = false;
-    private bool isAtPeak = false;
-    private bool isHit = false;
+    protected Vector3 initialPosition;
+    public bool isRising = false;
+    protected bool isAtPeak = false;
+    protected bool isHit = false;
     
-    private float _upDuration = 1.0f;
+    protected float _upDuration = 1.0f;
     
     // materials for switching mole color after getting hit
-    [SerializeField] private Material defaultMat;
-    [SerializeField] private Material hitMat;
-    private Renderer _myRenderer;
+    [SerializeField] protected Material defaultMat;
+    [SerializeField] protected Material hitMat;
+    protected Renderer _myRenderer;
 
     private void Start()
     {

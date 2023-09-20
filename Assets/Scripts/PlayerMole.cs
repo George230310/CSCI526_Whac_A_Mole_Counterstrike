@@ -1,24 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMole : MonoBehaviour
+public class PlayerMole : Mole
 {
-    public float speed = 2.0f;
-    public float fallSpeed = 2.0f;
-    public float riseHeight = 1.0f;
-    
-    private Vector3 initialPosition;
-    private bool isRising = false;
-    private bool isAtPeak = false;
-    private bool isHit = false;
-    
-    private float _upDuration = 1.0f;
-    
-    // materials for switching mole color after getting hit
-    [SerializeField] private Material defaultMat;
-    [SerializeField] private Material hitMat;
-    private Renderer _myRenderer;
-
     private void Start()
     {
         initialPosition = transform.position;
@@ -74,16 +58,5 @@ public class PlayerMole : MonoBehaviour
         isRising = false;
         CancelInvoke(nameof(Fall));
         CancelInvoke(nameof(StartRising));
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Hammer"))
-        {
-            _myRenderer.material = hitMat;
-            Debug.Log("Mole hit!");
-            isHit = true;
-            FallImmediately();
-        }
     }
 }
