@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class HammerController : MonoBehaviour
 {
+    private float smashDelay = 0.25f; // 每0.25秒检查一次是否有鼹鼠需要锤击
+    private float lastSmashTime = 0;
+
     // 控制锤击速度的公共变量
     public float smashSpeed = 10f;
 
@@ -38,57 +41,48 @@ public class HammerController : MonoBehaviour
 
     void Update()
     {
-       if (moles[0].GetComponent<Mole>().isRising)
-       {
-           
-       }
-        
-        // 每一帧都使锤子移动以跟随鼠标
-        MoveWithMouse();
-
-        // 当玩家按下鼠标左键，并且锤子当前没有在执行锤击操作
-        if (Input.GetMouseButtonDown(0) && !smashing)
+        if (Time.time - lastSmashTime > smashDelay)
         {
-            // 设置标志为true，表示开始执行锤击操作
-            smashing = true;
-
-            // 计算锤击时锤子的目标位置
-            smashPosition = transform.position - new Vector3(0, smashDistance, 0);
+            lastSmashTime = Time.time;
+            SmashRandomMole();
         }
 
-        // 当玩家松开鼠标左键，并且锤子当前正在执行锤击操作
-        if (Input.GetMouseButtonUp(0) && smashing)
+        // 直接移动锤子，不依赖于鼠标位置
+        MoveToTarget();
+    }
+    void MoveToTarget()
+    {
+        // 如果锤子正在执行锤击操作
+        if (smashing)
         {
-            // 设置标志为false，表示锤击操作结束
-            smashing = false;
+            // 使锤子移动到锤击的目标位置
+            transform.position = smashPosition;
+        }
+        else
+        {
+            // 如果锤子没有在执行锤击操作，使其回到原始位置
+            transform.position = originalPosition;
         }
     }
+ 
 
-    void MoveWithMouse()
+
+    void SmashRandomMole()
     {
-        // 从摄像机通过鼠标当前位置发出一条射线
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // 获取所有正在上升的鼹鼠
+        List<GameObject> risingMoles = moles.FindAll(mole => mole.GetComponent<Mole>().isRising);
 
-        // 用于存储射线碰撞的信息
-        RaycastHit hit;
-
-        // 如果射线与物体碰撞
-        if (Physics.Raycast(ray, out hit))
+        // 如果有正在上升的鼹鼠
+        if (risingMoles.Count > 0)
         {
-            // 计算锤子的目标位置，使其跟随鼠标
-            Vector3 targetPosition = new Vector3(hit.point.x, hammerHeight, hit.point.z);
+            // 从列表中随机选择一个
+            GameObject randomMole = risingMoles[Random.Range(0, risingMoles.Count)];
 
-            // 如果锤子正在执行锤击操作
-            if (smashing)
-            {
-                // 使锤子移动到锤击的目标位置
-                transform.position = smashPosition;
-            }
-            else
-            {
-                // 如果锤子没有在执行锤击操作，使其跟随鼠标移动
-                transform.position = targetPosition;
-            }
+            // 计算锤击位置
+            smashPosition = new Vector3(randomMole.transform.position.x, hammerHeight, randomMole.transform.position.z) - new Vector3(0, smashDistance, 0);
+
+            // 执行锤击
+            smashing = true;
         }
     }
 }
