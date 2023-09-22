@@ -17,6 +17,11 @@ public class PlayerMole : Mole
         {
             StartRising();
         }
+
+        if (isAtPeak && Input.GetAxis("Horizontal") > 0.0f)
+        {
+            Fall();
+        }
         
         if (isRising && !isAtPeak)
         {
@@ -29,8 +34,6 @@ public class PlayerMole : Mole
             {
                 isRising = false;
                 isAtPeak = true;
-                CancelInvoke(nameof(Fall));
-                Invoke(nameof(Fall), _upDuration);
             }
         }
         else if (!isRising && !isAtPeak && transform.position.y > initialPosition.y)
