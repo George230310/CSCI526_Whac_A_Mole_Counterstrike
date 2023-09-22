@@ -29,6 +29,11 @@ public class MoleSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CursorManager.Instance.gameEnded)
+        {
+            StopAllCoroutines(); // 停止所有的协程，确保不再生成新的鼹鼠
+            return;
+        }
         if (!myMole && !_isSpawning)
         {
             _isSpawning = true;
