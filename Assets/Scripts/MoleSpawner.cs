@@ -31,7 +31,7 @@ public class MoleSpawner : MonoBehaviour
     {
         if (CursorManager.Instance.gameEnded)
         {
-            StopAllCoroutines(); // 停止所有的协程，确保不再生成新的鼹鼠
+            StopAllCoroutines(); // stop spawning moles
             return;
         }
         if (!myMole && !_isSpawning)

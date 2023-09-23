@@ -23,6 +23,14 @@ public class SimpleMole : MonoBehaviour
         Destroy(gameObject, myLifeSpan);
     }
 
+    private void Update()
+    {
+        if (CursorManager.Instance.gameEnded)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDestroy()
     {
         mySpawner.myMole = null;
@@ -39,6 +47,7 @@ public class SimpleMole : MonoBehaviour
             else if (moleType == MoleType.Rock)
             {
                 CursorManager.Instance.gameScore += 100;
+                Destroy(gameObject);
             }
         }
         else if (CursorManager.Instance.cursorMoleType == MoleType.Scissor)
@@ -46,6 +55,7 @@ public class SimpleMole : MonoBehaviour
             if (moleType == MoleType.Paper)
             {
                 CursorManager.Instance.gameScore += 100;
+                Destroy(gameObject);
             }
             else if (moleType == MoleType.Rock)
             {
@@ -60,6 +70,7 @@ public class SimpleMole : MonoBehaviour
             }
             else if (moleType == MoleType.Scissor)
             {
+                Destroy(gameObject);
                 CursorManager.Instance.gameScore += 100;
             }
         }

@@ -11,8 +11,8 @@ public class CursorManager : MonoBehaviour
     public GameObject endScreen; 
     public TextMeshProUGUI endText;
 
-    public float gameTime = 30.0f;  // 总游戏时间
-    public bool gameEnded = false;  // 游戏是否结束
+    public float gameTime = 30.0f;  // game time span
+    public bool gameEnded;  // is game ended?
 
     public MoleType cursorMoleType = MoleType.Scissor;
     public Texture2D[] cursorTextures;
@@ -34,38 +34,23 @@ public class CursorManager : MonoBehaviour
         Cursor.SetCursor(cursorTextures[1], Vector2.zero, CursorMode.Auto);
     }
 
-    void EndGame(string message)
-    {
-        gameEnded = true;
-
-        // 停止鼹鼠的生成
-        MoleSpawner[] spawners = FindObjectsOfType<MoleSpawner>();
-        foreach (var spawner in spawners)
-        {
-            spawner.StopAllCoroutines();
-        }
-
-        // 显示结束界面
-        GameHUD.Instance.ShowEndScreen(message);
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (gameEnded)
         {
-            // 关闭游戏
-            StartCoroutine(CloseGame());
-            return; // 不执行下面的代码
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            return;
         }
+        
         if (!gameEnded)
         {
-            gameTime -= Time.deltaTime;  // 减少游戏时间
-            if (gameTime <= 0 || gameScore >= 500) // 添加得分检查
+            gameTime -= Time.deltaTime;  // decrement game time
+            if (gameTime <= 0 || gameScore >= 500) // score check
             {
                 gameEnded = true;
 
-                // 显示结束屏幕和文本
+                // display endgame screen
                 endScreen.SetActive(true);
                 if (gameScore >= 500)
                 {
@@ -94,14 +79,29 @@ public class CursorManager : MonoBehaviour
             Cursor.SetCursor(cursorTextures[2], Vector2.zero, CursorMode.Auto);
         }
     }
+    
+    void EndGame(string message)
+    {
+        gameEnded = true;
+
+        // stop spawning
+        MoleSpawner[] spawners = FindObjectsOfType<MoleSpawner>();
+        foreach (var spawner in spawners)
+        {
+            spawner.StopAllCoroutines();
+        }
+
+        // display endgame message
+        GameHUD.Instance.ShowEndScreen(message);
+    }
 
     IEnumerator CloseGame()
     {
-        yield return new WaitForSeconds(1f); // 等待1秒
+        yield return new WaitForSeconds(1f);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit(); // 如果在构建的版本中运行，关闭游戏
+        Application.Quit(); // shut down in build
 #endif
     }
 

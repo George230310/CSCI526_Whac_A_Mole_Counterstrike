@@ -16,6 +16,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadMainMenu()
     {
         Debug.Log("Attempting to load");
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         SceneManager.LoadScene("MainMenu");  
     }
     

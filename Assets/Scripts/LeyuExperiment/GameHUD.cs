@@ -9,8 +9,8 @@ public class GameHUD : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI timeText;
-    [SerializeField] private GameObject endScreen;  // 结束界面
-    [SerializeField] private TextMeshProUGUI endMessageText;  // 显示"You Win!"或"You Lose!"的文本
+    [SerializeField] private GameObject endScreen;  // end game screen
+    [SerializeField] private TextMeshProUGUI endMessageText;  // end game message
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class GameHUD : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + CursorManager.Instance.gameScore.ToString();
-        timeText.text = "Time: " + Mathf.Ceil(CursorManager.Instance.gameTime).ToString();  // 显示整数时间
+        timeText.text = "Time: " + Mathf.Ceil(CursorManager.Instance.gameTime).ToString();  // display time remaining
     }
 
     public void ShowEndScreen(string message)

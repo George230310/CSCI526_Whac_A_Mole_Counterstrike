@@ -2,5 +2,8 @@
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$/Assets/HammerController.cs" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/LeyuExperiment/CursorManager.cs" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/LeyuExperiment/GameHUD.cs" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/MoleSpawner.cs" charset="windows-1252" />
   </component>
 </project>
