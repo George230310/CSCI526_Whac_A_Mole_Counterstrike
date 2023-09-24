@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Leyu_idea.unity
-    guid: beac9e6f8269a4b44828e84f85d9c96b
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: da69a45609685499485c97d91f250590
+    guid: afec9fe2a61854d88a00076c484996f4
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 17e5a5fe346f32f4d87f7bf2d81ea5cc
+  - enabled: 1
+    path: Assets/Scenes/Leyu_idea.unity
+    guid: beac9e6f8269a4b44828e84f85d9c96b
   m_configObjects: {}
