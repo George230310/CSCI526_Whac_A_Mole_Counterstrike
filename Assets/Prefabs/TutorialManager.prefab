@@ -57,12 +57,12 @@ MonoBehaviour:
   - Now you have switched to paper, press the '3' key to switch to scissor
   - Oops, a mole just spawned on the ground, and it chooses to challenge you with
     rock
-  - Switch your choice to paper with '2', left click on the mole cube to defeat it
+  - Switch your choice to paper with '2', left click on the mole CUBE to defeat it
   - You can see on the left side of screen that your current score is increased by
     100
   - In the actual game, you need to make it to the target score within time limit
     to win the game (unlimited time right now)
-  - Remember, rock beats scissor, scissor beats paper, paper beats rock
-  - A win in rock paper scissor is +100, a tie is +0, and a lose is -50
+  - Remember, rock beats scissors, scissors beats paper, paper beats rock
+  - A win in rock paper scissors is +100, a tie is +0, and a lose is -50
   - Moles spawn randomly on the ground like this
   - Now, try to reach the target score to finish the tutorial!

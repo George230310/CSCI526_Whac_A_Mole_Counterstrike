@@ -19,5 +19,9 @@ public class SceneLoader : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         SceneManager.LoadScene("MainMenu");  
     }
-    
+
+    public void LoadHardLevel()
+    {
+        SceneManager.LoadScene("HardLevel");
+    }
 }
