@@ -14,13 +14,19 @@ public class SimpleMole : MonoBehaviour
 {
     public float myLifeSpan = 3.0f;
     public MoleSpawner mySpawner;
+    public TutorialMoleSpawner myTutorialSpawner;
 
     [SerializeField] private MoleType moleType;
+
+    public bool isTutorialMole;
     
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, myLifeSpan);
+        if (!isTutorialMole)
+        {
+            Destroy(gameObject, myLifeSpan);
+        }
     }
 
     private void Update()
@@ -33,7 +39,15 @@ public class SimpleMole : MonoBehaviour
 
     private void OnDestroy()
     {
-        mySpawner.myMole = null;
+        if (mySpawner)
+        {
+            mySpawner.myMole = null;
+        }
+
+        if (myTutorialSpawner)
+        {
+            myTutorialSpawner.myMole = null;
+        }
     }
 
     private void OnMouseDown()

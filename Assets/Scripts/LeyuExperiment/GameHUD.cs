@@ -11,6 +11,7 @@ public class GameHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private GameObject endScreen;  // end game screen
     [SerializeField] private TextMeshProUGUI endMessageText;  // end game message
+    [SerializeField] private TextMeshProUGUI targetScoreText;
 
     private void Awake()
     {
@@ -26,8 +27,12 @@ public class GameHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score: " + CursorManager.Instance.gameScore.ToString();
-        timeText.text = "Time: " + Mathf.Ceil(CursorManager.Instance.gameTime).ToString();  // display time remaining
+        if (CursorManager.Instance)
+        {
+            scoreText.text = "Current Score: " + CursorManager.Instance.gameScore;
+            timeText.text = "Time Remaining: " + Mathf.Ceil(CursorManager.Instance.gameTime) + "s";  // display time remaining
+            targetScoreText.text = "Target Score: " + CursorManager.Instance.targetScore;
+        }
     }
 
     public void ShowEndScreen(string message)

@@ -5,7 +5,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadTutorial()
     {
-        SceneManager.LoadScene("Leyu_idea"); 
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void LoadGame()

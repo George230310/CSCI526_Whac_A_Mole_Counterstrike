@@ -14,9 +14,11 @@ public class CursorManager : MonoBehaviour
     public float gameTime = 30.0f;  // game time span
     public bool gameEnded;  // is game ended?
 
-    public MoleType cursorMoleType = MoleType.Scissor;
+    public MoleType cursorMoleType = MoleType.Rock;
     public Texture2D[] cursorTextures;
     public float gameScore = 0.0f;
+
+    public float targetScore = 500f;
 
     private void Awake()
     {
@@ -31,7 +33,7 @@ public class CursorManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.SetCursor(cursorTextures[1], Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorTextures[2], Vector2.zero, CursorMode.Auto);
     }
 
     // Update is called once per frame
@@ -46,13 +48,13 @@ public class CursorManager : MonoBehaviour
         if (!gameEnded)
         {
             gameTime -= Time.deltaTime;  // decrement game time
-            if (gameTime <= 0 || gameScore >= 500) // score check
+            if (gameTime <= 0 || gameScore >= targetScore) // score check
             {
                 gameEnded = true;
 
                 // display endgame screen
                 endScreen.SetActive(true);
-                if (gameScore >= 500)
+                if (gameScore >= targetScore)
                 {
                     endText.text = "You Win!";
                 }
@@ -63,20 +65,20 @@ public class CursorManager : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("Paper") > 0f)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            cursorMoleType = MoleType.Rock;
+            Cursor.SetCursor(cursorTextures[2], Vector2.zero, CursorMode.Auto);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             cursorMoleType = MoleType.Paper;
             Cursor.SetCursor(cursorTextures[0], Vector2.zero, CursorMode.Auto);
         }
-        else if (Input.GetAxis("Scissor") > 0f)
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             cursorMoleType = MoleType.Scissor;
             Cursor.SetCursor(cursorTextures[1], Vector2.zero, CursorMode.Auto);
-        }
-        else if (Input.GetAxis("Rock") > 0f)
-        {
-            cursorMoleType = MoleType.Rock;
-            Cursor.SetCursor(cursorTextures[2], Vector2.zero, CursorMode.Auto);
         }
     }
     

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6635090993776814641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6635090993776814606}
+  - component: {fileID: 6420541619103719592}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6635090993776814606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635090993776814641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6420541619103719592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635090993776814641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e840f617815ecb49b9a7dd0fa2d603c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialMoleSpawner: {fileID: 0}
+  moleSpawner: {fileID: 0}
+  tutorialText: {fileID: 0}
+  allTutorialText:
+  - 'Welcome to Whac A Mole: RPS'
+  - In this game, instead of smashing moles, you will have to defeat them by winning
+    rock paper scissor games
+  - Now, let's get started with the tutorial
+  - Your cursor represents your choice among rock, paper, and scissor
+  - Your choice is default to rock, press the '2' key to switch to paper
+  - Now you have switched to paper, press the '3' key to switch to scissor
+  - Oops, a mole just spawned on the ground, and it chooses to challenge you with
+    rock
+  - Switch your choice to paper with '2', left click on the mole cube to defeat it
+  - You can see on the left side of screen that your current score is increased by
+    100
+  - In the actual game, you need to make it to the target score within time limit
+    to win the game (unlimited time right now)
+  - Remember, rock beats scissor, scissor beats paper, paper beats rock
+  - A win in rock paper scissor is +100, a tie is +0, and a lose is -50
+  - Moles spawn randomly on the ground like this
+  - Now, try to reach the target score to finish the tutorial!
