@@ -32,8 +32,8 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        tutorialText.gameObject.SetActive(true);
         tutorialBg.SetActive(true);
+        tutorialText.gameObject.SetActive(true);
         tutorialText.text = allTutorialText[_currentTutorialTextIndex] + " (Left click to continue)";
 
         StartCoroutine(RunTutorial());
