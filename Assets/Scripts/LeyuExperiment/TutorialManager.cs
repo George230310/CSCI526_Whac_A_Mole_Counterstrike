@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject moleSpawner;
     [SerializeField] private TextMeshProUGUI tutorialText;
     [SerializeField] private String[] allTutorialText;
+    [SerializeField] private GameObject tutorialBg;
 
     private int _currentTutorialTextIndex;
     
@@ -31,6 +33,7 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         tutorialText.gameObject.SetActive(true);
+        tutorialBg.SetActive(true);
         tutorialText.text = allTutorialText[_currentTutorialTextIndex] + " (Left click to continue)";
 
         StartCoroutine(RunTutorial());
